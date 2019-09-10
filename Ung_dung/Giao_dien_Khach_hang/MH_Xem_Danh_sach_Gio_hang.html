@@ -1,0 +1,135 @@
+<head>
+    <title>SSS Bán Rau</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/site.css">
+    <script src="../Xu_ly/XL_CO_SO.js"></script>
+    <script src="../Xu_ly/XL_UNG_DUNG_KHACH_HANG.js"></script>
+</head>
+
+<body>
+<div class="wrap">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h3 class="text-center " style="color:black">Your Cart</h3>
+        <button type="button" id="Th_Xoa" class="btn btn-warning btn-group-sm">Delete</button>
+        <p></p>
+        <div class="table-responsive">
+            <table class="table table-condensed table-striped table-bordered" id="Th_Table">
+                <thead>
+                <tr class="text-primary">
+                    <th>Image</th>
+                    <th>Phone</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Amount</th>
+                    <th></th>
+
+                </tr>
+                </thead>
+                <tbody id="Th_Danh_sach_Rau">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Customer Info</div>
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-xs-2">Full Name</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" placeholder="Họ tên" id="Th_Ho_ten" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-2">Phone number</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" placeholder="Điện thoại"
+                                       id="Th_Dien_thoai_Khach" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-2">Address</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" placeholder="Địa chỉ" id="Th_Dia_chi">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-2">Delivery Date</label>
+                            <div class="col-xs-10">
+                                <input type="date" class="form-control" placeholder="Ngày Giao hàng"
+                                       id="Th_Ngay_Giao_hang">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-offset-2 col-xs-10">
+                                <button type="button" id="Th_Dong_y" class="btn btn-primary btn-group-sm active">Đặt hàng
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    var Danh_sach_Rau = "";
+    XL_DU_LIEU.Khoi_dong_Du_lieu((Du_lieu) => {
+        Danh_sach_Rau = Du_lieu.Danh_sach_Rau;
+        Danh_sach_Rau.forEach(Rau => {
+            if (sessionStorage.getItem(Rau.Ma_so)) {
+                var Th_Rau = XL_RAU.Tao_The_hien_Gio_hang(Rau, Th_Danh_sach_Rau);
+                Th_Rau.onclick = () => {
+
+                }
+            }
+        });
+
+        Th_Xoa.onclick = () => {
+            var Danh_sach_Xoa = document.getElementsByName("Th_Xoa_Rau");
+            for (var i = 0; i < Danh_sach_Xoa.length; i++) {
+                if (Danh_sach_Xoa[i].checked) {
+                    var Ma_so = Danh_sach_Xoa[i].value;
+
+                    sessionStorage.removeItem(Ma_so);
+
+                    Th_Table.deleteRow(i + 1)
+                }
+                if (sessionStorage.length == 0) {
+                    window.location = "./MH_Xem_Danh_sach.html"
+                }
+            }
+        };
+        Th_Dong_y.onclick = () => {
+            var Danh_sach_So_luong = document.getElementsByName("Th_So_luong");
+            for (var i = 0; i < Danh_sach_So_luong.length; i++) {
+                var Ma_so = Danh_sach_So_luong[i].getAttribute("Ma_so");
+                var So_luong = parseInt(Danh_sach_So_luong[i].value);
+                var Rau = Danh_sach_Rau.find(Rau => Rau.Ma_so == Ma_so);
+                var Phieu_mua = {};
+                Phieu_mua.Ngay_Dat_hang = new Date();
+                Phieu_mua.Ngay_Giao_hang = document.getElementById("Th_Ngay_Giao_hang").value;
+                Phieu_mua.So_luong = So_luong;
+                Phieu_mua.Don_gia_Ban = Rau.Don_gia_Ban;
+                Phieu_mua.Tien = So_luong * Rau.Don_gia_Ban;
+                Phieu_mua.Trang_thai = "CHUA_GIAO_HANG";
+                Phieu_mua.Khach_hang = {};
+                Phieu_mua.Khach_hang.Ho_ten = document.getElementById("Th_Ho_ten").value;
+                Phieu_mua.Khach_hang.Dien_thoai = document.getElementById("Th_Dien_thoai_Khach").value;
+                Phieu_mua.Khach_hang.Dia_chi = document.getElementById("Th_Dia_chi").value;
+                Rau.Danh_sach_Phieu_dat_hang.push(Phieu_mua);
+                XL_DU_LIEU.Them_Phieu_Dat_hang(Rau);
+                sessionStorage.removeItem(Ma_so);
+            }
+        }
+    })
+</script>
+</body>

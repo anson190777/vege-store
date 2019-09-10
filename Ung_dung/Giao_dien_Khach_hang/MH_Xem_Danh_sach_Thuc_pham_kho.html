@@ -1,0 +1,53 @@
+<head>
+    <title>SSS Rau Sạch</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dinh_dang_man_hinh_chinh.css">
+    <link rel="stylesheet" href="css/site.css">
+    <script src="../Xu_ly/XL_CO_SO.js"></script>
+    <script src="../Xu_ly/XL_UNG_DUNG_KHACH_HANG.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <div class="row" id="Th_Danh_sach_Rau">
+        <h4 class="chu_dau">Danh sách Thực phẩm khô : </h4>
+
+    </div>
+</div>
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    XL_DU_LIEU.Khoi_dong_Du_lieu((Du_lieu) => {
+        var Danh_sach_Rau = Du_lieu.Danh_sach_Rau;
+
+        Danh_sach_Rau.forEach(Rau => {
+            if (Rau.Nhom_rau.Ma_so == "Thucphamkho") {
+                var Th_Rau = XL_RAU.Tao_The_hien(Rau, Th_Danh_sach_Rau);
+
+                var trangthai = sessionStorage.getItem(Rau.Ma_so);
+                if (trangthai != null) {
+                    Th_Rau.style.opacity = 0.5;
+                    sessionStorage.setItem(Rau.Ma_so, Rau.Ma_so);
+                } else {
+                    Th_Rau.style.opacity = 1;
+                    sessionStorage.removeItem(Rau.Ma_so);
+                }
+                Th_Rau.style.cursor = "pointer";
+                Th_Rau.onclick = () => {
+                    var trangthai = sessionStorage.getItem(Rau.Ma_so);
+                    if (trangthai == null) {
+                        Th_Rau.style.opacity = 0.5;
+                        sessionStorage.setItem(Rau.Ma_so, Rau.Ma_so);
+                    } else {
+                        Th_Rau.stye.opacity = 1;
+                        sessionStorage.setItem(Rau.Ma_so);
+                    }
+                }
+            }
+        })
+    })
+</script>
+</body>

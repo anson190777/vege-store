@@ -1,0 +1,57 @@
+<head>
+    <title>SSS Bán Rau</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dinh_dang_man_hinh_chinh.css">
+    <link rel="stylesheet" href="css/site.css">
+    <script src="../Xu_ly/XL_CO_SO.js"></script>
+    <script src="../Xu_ly/XL_UNG_DUNG_NHAN_VIEN.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h4 id="Th_Nhan_vien"></h4>
+
+        </div>
+    </div>
+    <!-- Table-->
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h3 class="chu_dau text-center" >Danh sách sản phẩm </h3>
+        <div class="table-responsive">
+            <table class="table table-bordered table-light table-hover">
+                <thead>
+                    <tr class="text-primary" style="background-color: black; color: white;">
+                        <th>Ảnh </th>
+                        <th>Sản phẩm </th>
+                        <th>Loại </th>
+                        <th>Đơn giá </th>
+                        <th>Đã giao hàng</th>
+                        <th>Chưa giao hàng</th>
+
+                    </tr>
+                </thead>
+                <tbody id="Th_Danh_sach_Rau">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- End Table-->
+
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        XL_DU_LIEU.Khoi_dong_Du_lieu((Du_lieu)=>{
+            var Danh_sach_Rau = Du_lieu.Danh_sach_Rau;
+            Danh_sach_Rau.forEach(Rau=>{
+                var Th_Rau=XL_RAU.Tao_The_hien(Rau,Th_Danh_sach_Rau);
+                Th_Rau.onclick=()=>{
+
+                }
+            })
+        })
+    </script>
+</body>

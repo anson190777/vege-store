@@ -1,0 +1,101 @@
+<head>
+    <title>SSS Bán Rau</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dinh_dang_man_hinh_chinh.css">
+    <link rel="stylesheet" href="css/site.css">
+    <script src="../Xu_ly/XL_CO_SO.js"></script>
+    <script src="../Xu_ly/XL_UNG_DUNG_NHAN_VIEN.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h4 id="Th_Nhan_vien"></h4>
+                <strong>Loại sản phẩm:</strong>
+                <select id="Th_loai_rau">
+                    <option value="Rauanla">Rau ăn lá </option>
+                    <option value="Rauanthan">Rau ăn thân </option>
+                    <option value="Rauanqua">Rau ăn quả </option>
+                    <option value="Rauancu">Rau ăn củ </option>
+                    <option value="Rauanhat">Rau ăn hạt </option>
+                    <option value="Traicay">Trái cây </option>
+                    <option value="Thucphamkho">Thực phẩm khô </option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <!-- Table-->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                <h3 class="chu_dau text-center">Danh sách giao hang </h3>
+                <button style="position:fixed;" class="btn btn-danger btn-sm" id="Th_Dong_y" type="button">Giao hàng</button>
+                <div class="table-responsive">
+                    <!-- MH_Giao_hang.html-->
+                    <table class="table">
+                        <thead>
+                            <tr class="text-warning">
+                                <th>Sản phẩm</th>
+                                <th>Chi tiết</th>
+                                <th>Tổng </th>
+                            </tr>
+                        </thead>
+                        <tbody id="Th_Danh_sach_Rau">
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Table-->
+
+    <script src="js/jquery-1.11.2.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+<script>
+    var Loai_rau="";
+    var Danh_sach_Rau="";
+    Th_loai_rau.onchange=()=>{
+        Loai_rau=Th_loai_rau.value;
+        Th_Danh_sach_Rau.innerHTML="";
+        XL_DU_LIEU.Khoi_dong_Du_lieu((Du_lieu)=>{
+            Danh_sach_Rau=Du_lieu.Danh_sach_Rau;
+            Danh_sach_Rau.forEach(Rau=>{
+                if(Loai_rau==Rau.Nhom_rau.Ma_so){
+                    var Th_Rau=XL_RAU.Tao_The_hien_Giao_hang(Rau,Th_Danh_sach_Rau)
+                    Th_Rau.onclick=()=>{
+
+                    }
+                }
+            })
+        })
+    }
+    Th_loai_rau.onchange();
+    Th_Dong_y.onclick=()=>{
+        var Danh_sach_Th_Giao_hang = document.getElementsByName("Th_Giao_hang");
+        for(var i=0 ; i < Danh_sach_Th_Giao_hang.length ; i++ ){
+            if(Danh_sach_Th_Giao_hang[i].checked == true ){
+                var Ma_so = Danh_sach_Th_Giao_hang[k].getAttribute("Ma_so");
+                var Ho_ten = Danh_sach_Th_Giao_hang[k].getAttribute("Ho_ten");
+                var So_Dien_thoai = Danh_sach_Th_Giao_hang[k].getAttribute("Dien_thoai");
+
+                var Rau=Danh_sach_Rau.find(x => x.Ma_so == Ma_so )
+                var Danh_sach_Phieu_dat_hang = Rau.Danh_sach_Phieu_dat_hang;
+                Danh_sach_Phieu_dat_hang.forEach(Phieu => {
+                    if(Phieu.Khach_hang.Ten == Ho_ten && Phieu.Khach_hang.Dien_thoai == So_Dien_thoai ){
+                        Phieu.Trang_thai = "DA_GIAO";
+                        XL_DU_LIEU.Cap_nhat_Giao_hang(Rau)
+                    }
+                })
+            }
+        }
+    }
+</script>
+</body>

@@ -1,0 +1,43 @@
+<head>
+    <title>SSS Bán Rau</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dinh_dang_man_hinh_chinh.css">
+    <link rel="stylesheet" href="css/site.css">
+    <script src="../Xu_ly/XL_CO_SO.js"></script>
+    <script src="../Xu_ly/XL_UNG_DUNG_KHACH_HANG.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <h1 style="color:black">Type your vegetables for searching: </h1>
+        <input type="text" id="find_value"/>
+        <button id="search">Search</button>
+    </div>
+    <h4 style="color: black">Results:</h4>
+    <div class="container">
+        <div class="row" id="Th_Danh_sach_Rau">
+
+        </div>
+    </div>
+</div>
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    XL_DU_LIEU.Khoi_dong_Du_lieu((Du_lieu) => {
+        var Danh_sach_Rau = Du_lieu.Danh_sach_Rau;
+        search.onclick = () => {
+            var find_rau = find_value.value;
+            var Danh_sach_Rau_Tim = Danh_sach_Rau.filter(Rau => Rau.Ten.toUpperCase().includes(find_rau.toUpperCase()) == 1)
+            Th_Danh_sach_Rau.innerHTML = "";
+            Danh_sach_Rau_Tim.forEach(Rau => {
+                var Th_Rau = XL_RAU.Tao_The_hien(Rau, Th_Danh_sach_Rau);
+                
+            })
+        }
+    })
+</script>
+</body>

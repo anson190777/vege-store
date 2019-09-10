@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SSS Bán Rau</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dinh_dang_man_hinh_chinh.css">
+    <link rel="stylesheet" href="css/site.css">
+    <script src="../Xu_ly/XL_CO_SO.js"></script>
+    <script src="../Xu_ly/XL_UNG_DUNG_CUA_HANG.js"></script>
+
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body>
+    <!-- header-->
+    <div class="container">
+        <div class="row header">
+            <div class="col-xs-12 col-md-12 col-sm-12" id="Th_Cua_hang">
+            </div>
+
+        </div>
+    </div>
+    <!-- header-->
+    <!-- Menu-->
+    <div class="container">
+        <div class="row menu">
+            <div class="col-xs-12 col-md-12 col-sm-12">
+                <div class="btn-group btn-group-xs">
+                    <button class="btn btn-default" id="Th_Tat_ca" type="button">
+                        <span class="fa fa-home fa-4x"></span>
+                        <br> Trang Chủ
+                    </button>
+
+                    <button class="btn btn-default" id="Th_Giao_hang" type="button">
+                        <span class="fa fa-book fa-4x"></span>
+                        <br> Giao Hàng
+                    </button>
+
+                    <button class="btn btn-default" id="Th_Dia_diem" type="button">
+                        <span class="fa fa-map-marker fa-4x"></span>
+                        <br> Địa điểm
+                    </button>
+                    <button class="btn btn-default" id="Th_Logout" type="button">
+                        <span class="fa fa-sign-out fa-4x"></span>
+                        <br> Thoát
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Menu-->
+    <!-- content-->
+    <div class="container">
+        <div class="row content">
+            <div class="col-xs-12 col-md-12 col-sm-12">
+                <iframe id='Khung_Chuc_nang'></iframe>
+            </div>
+
+        </div>
+    </div>
+    <!-- content-->
+    <!-- footer-->
+    <div class="container">
+        <div class="row footer">
+            <div class="col-xs-12 col-md-12 col-sm-12" id="Th_Cuoi_trang">
+
+            </div>
+        </div>
+    </div>
+    <!-- footer-->
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+<script>
+    XL_DU_LIEU.Khoi_dong_Du_lieu((Du_lieu)=>{
+        var Cua_hang=Du_lieu.Thong_tin_Cua_hang;
+        XL_CUA_HANG.Tao_The_hien(Cua_hang,Th_Cua_hang,Th_Cuoi_trang);
+    });
+    Th_Tat_ca.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Xem_Danh_sach.html"
+    };
+    Th_Giao_hang.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Xem_Danh_sach_Giao_hang.html"
+    };
+    Th_Dia_diem.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Xem_Dia_diem_Cua_hang.html"
+    };
+    Th_Logout.onclick = () => {
+        window.location.href = "../Giao_dien_Khach_hang/MH_Chinh.html"
+    };
+    Th_Tat_ca.click();
+</script>
+
+</html>

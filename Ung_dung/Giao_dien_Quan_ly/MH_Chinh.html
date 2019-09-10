@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SSS Bán Rau</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dinh_dang_man_hinh_chinh.css">
+    <link rel="stylesheet" href="css/site.css">
+
+    <script src="../Xu_ly/XL_CO_SO.js"></script>
+    <script src="../Xu_ly/XL_UNG_DUNG_CUA_HANG.js"></script>
+
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .modal-open .modal {
+        background-color: black
+    }
+</style>
+
+<body>
+    <!-- header-->
+    <div class="container">
+        <div class="row header">
+            <div class="col-xs-12 col-md-12 col-sm-12" id="Th_Cua_hang">
+                <div class="col-xs-12 col-md-12 col-sm-12" id="Th_Cua_hang">
+                    <!-- <h2 class="pull-left" style="color: white; font-family: font_face;font-size: 70px;margin-top:12px;">SSS BÁN RAU</h2>
+                    <h4 class="text-info badge pull-right">Phone: 01628010342
+                        <br>Email: anson1907@gmail.com
+                        <br>Address: 137E Nguyễn Chí Thanh, Q.Tân Bình, TpHCM;
+                    </h4> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- header-->
+    <!-- Menu-->
+    <div class="container">
+        <div class="row menu">
+            <div class="col-xs-12 col-md-12 col-sm-12">
+                <div class="">
+                    <button class="btn btn-default" id="Th_Tat_ca" type="button">
+                        <span class="fa fa-home fa-3x"></span>
+                        <br> Trang chủ
+                    </button>
+                    <button class="btn btn-default" id="Th_Dat_hang" type="button">
+                        <span class="fa fa-gift fa-3x"></span>
+                        <br> Đặt hàng
+                    </button>
+
+                    <button class="btn btn-default" id="Th_Giao_hang" type="button">
+                        <span class="fa fa-check fa-3x"></span>
+                        <br> Giao hàng
+                    </button>
+
+                    <button class="btn btn-default" id="Th_Them" type="button">
+                        <span class="fa fa-plus-square fa-3x"></span>
+                        <br> Thêm
+                    </button>
+
+                    <button class="btn btn-default" id="Th_Sua" type="button">
+                        <span class="fa fa-pencil fa-3x"></span>
+                        <br> Cập nhật
+                    </button>
+
+                    <button class="btn btn-default" id="Th_Xoa" type="button">
+                        <span class="fa fa-remove fa-3x"></span>
+                        <br> Xóa
+                    </button>
+
+                    <button class="btn btn-default" id="Th_Logout" type="button">
+                        <span class="fa fa-sign-out fa-3x"></span>
+                        <br> Thoát
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Menu-->
+    <!-- content-->
+    <div class="container">
+        <div class="row content">
+            <iframe id='Khung_Chuc_nang'></iframe>
+        </div>
+    </div>
+    <!-- content-->
+    <!-- footer-->
+    <div class="container">
+        <div class="row footer">
+            <div class="col-xs-12 col-md-12 col-sm-12" id="Th_Cuoi_trang">
+
+            </div>
+        </div>
+    </div>
+    <!-- footer-->
+    <!--Modal-->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                    <h4 class="modal-title">ĐĂNG NHẬP HỆ THỐNG</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="Th_Ten">Tên đăng nhập:</label>
+                        <input type="text" class="form-control" id="Th_Ten_Dang_nhap" value="QL_1">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Mật khẩu:</label>
+                        <input type="password" class="form-control" value="QL_1" id="Th_Mat_khau">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="text-danger" id="Th_Thong_bao"></div>
+                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                    <button type="button" class="btn btn-primary" id="Th_Dang_nhap" autofocus>Đăng nhập</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+
+    <!-- end Modal-->
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+<script>
+
+    if (!sessionStorage.getItem("Ho_ten")) {
+        $("#myModal").modal({ backdrop: false });
+    }
+
+    Th_Dang_nhap.onclick = () => {
+        var Ten_Dang_nhap = Th_Ten_Dang_nhap.value
+        var Mat_khau = Th_Mat_khau.value
+        XL_DU_LIEU.Dang_nhap_He_thong_Quan_ly(Ten_Dang_nhap, Mat_khau, (Du_lieu) => {
+            Th_Thong_bao.innerHTML = Du_lieu.Ma_so_Loi
+            if (Du_lieu.Ma_so_Loi == "") {
+
+                $("#myModal").modal("hide")
+                sessionStorage.setItem("Ho_ten", Du_lieu.Ho_ten)
+            }
+
+        });
+
+    }
+
+    Th_Tat_ca.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Xem_Danh_sach.html"
+    }
+    Th_Dat_hang.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Xem_Danh_sach_Dat_hang.html"
+    }
+
+    Th_Giao_hang.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Xem_Danh_sach_Giao_hang.html"
+    }
+
+
+    Th_Them.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Them_Rau.html"
+    }
+    Th_Sua.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Cap_nhat_Rau.html"
+    }
+
+    Th_Xoa.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Xoa_Rau.html"
+    }
+    Th_Logout.onclick = () => {
+        window.location.href = "../Giao_dien_Khach_hang/MH_Chinh.html"
+    }
+
+    Th_Tat_ca.click()
+</script>
+
+</html>

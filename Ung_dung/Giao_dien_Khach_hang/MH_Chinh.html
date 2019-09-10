@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SSS Bán Rau</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dinh_dang_man_hinh_chinh.css">
+    <link rel="stylesheet" href="css/site.css">
+    <!--Test-->
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <meta name="keywords" content="Samsung, LG, Sony Ericsson, Motorola web design" />
+    <!-- <link href='//fonts.googleapis.com/css?family=Londrina+Solid|Coda+Caption:800|Open+Sans' rel='stylesheet' type='text/css'> -->
+    <link rel="stylesheet" href="css/responsiveslides.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/responsiveslides.min.js"></script>
+    <script src="../Xu_ly/XL_CO_SO.js"></script>
+    <script src="../Xu_ly/XL_UNG_DUNG_CUA_HANG.js"></script>
+    <script>
+        // You can also use "$(window).load(function() {"
+        jQuery(function ($) {
+
+            // Slideshow 1
+            $("#slider1").responsiveSlides({
+                maxwidth: 1600,
+                speed: 500
+            });
+        });
+    </script>
+    <!--Test-->
+
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body style="background-color: white">
+    <!-- header-->
+    <div class="container">
+        <div class="row header">
+            <div class="col-xs-12 col-md-12 col-sm-12" id="Th_Cua_hang">
+            </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <!--start-image-slider-->
+
+        <div class="image-slider">
+            <!-- Slideshow 1 -->
+            <ul class="rslides" id="slider1" name="slider1">
+                <li>
+                    <img src="images/1.png" alt="">
+                </li>
+                <li>
+                    <img src="images/2.png" alt="">
+                </li>
+                <li>
+                    <img src="images/1.png" alt="">
+
+                </li>
+            </ul>
+            <!-- Slideshow 2 -->
+        </div>
+        <!--End-image-slider-->
+
+
+    </div>
+    <!-- header-->
+    <!-- Menu-->
+    <div class="container">
+
+        <div class="row menu">
+            <div class="col-xs-12 col-md-12 col-sm-12">
+                <div class="">
+                    <button class="btn btn-default" id="Th_Tat_ca" type="button">
+                        <span class="fa fa-home fa-3x"></span>
+                        <br> Trang chủ
+                    </button>
+
+                    <button type="button" class="chu_dau btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span class="fa fa-database fa-3x"></span>
+                        <br>Loại Rau
+                    </button>
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item btn btn-default" id="Th_Rau_an_la" type="button" href="#">
+                            <br> Rau Ăn Lá
+                        </button>
+                        <button class="dropdown-item btn btn-default" id="Th_Rau_an_than" type="button" href="#">
+                            <br> Rau Ăn Thân
+                        </button>
+                        <button class="dropdown-item btn btn-default" id="Th_Rau_an_qua" type="button" href="#">
+                            <br> Rau Ăn Quả
+                        </button>
+                        <button class="dropdown-item btn btn-default" id="Th_Rau_an_cu" type="button" href="#">
+                            <br> Rau Ăn Củ
+                        </button>
+                        <button class="dropdown-item btn btn-default" id="Th_Rau_an_hat" type="button" href="#">
+                            <br> Rau Ăn Hạt
+                        </button>
+                        <button class="dropdown-item btn btn-default" id="Th_Trai_cay" type="button" href="#">
+                            <br> Trái Cây
+                        </button>
+                        <button class="dropdown-item btn btn-default" id="Th_Thuc_pham_kho" type="button" href="#">
+                            <br> Thực Phẩm Khô
+                        </button>
+                    </div>
+                    <button class="btn btn-default" id="Th_Tim_kiem" type="button">
+                        <span class="fa fa-search fa-3x"></span>
+                        <br> Tìm Kiếm
+                    </button>
+
+                    <button class="btn btn-default" id="Th_Gio_hang" type="button" data-toggle="modal" data-target="#myModal">
+                        <span class="fa fa-shopping-cart fa-3x"></span>
+                        <br> Giỏ Hàng
+                    </button>
+                    <button class="btn btn-default" id="Th_Lien_he" type="button">
+                        <span class="fa fa-phone fa-3x"></span>
+                        <br> Liên Hệ
+                    </button>
+                    <button class="btn btn-default" id="Th_Login" type="button">
+                        <span class="fa fa-sign-in fa-3x"></span>
+                        <br> Đăng nhập
+                    </button>
+
+                    <div id="Th_modal"></div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Menu-->
+    <!-- content-->
+    <div class="container">
+        <div class="row content">
+
+            <iframe id='Khung_Chuc_nang' style="margin-top: -6px"></iframe>
+
+        </div>
+    </div>
+    <!-- content-->
+    <!-- footer-->
+    <div class="container" style="padding-top: 37px;margin-top: -67px;">
+        <div class="badge-footer col-lg-11 col-lg-offset-1" style="padding-top: 37px;">
+            <div class="fooder">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-lg-3">
+                            <div class="row">
+                                <h5>Infomation</h5>
+                                <ul class="list-menu">
+                                    <li>
+                                        <a href="https://www.hcmus.edu.vn/">About Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.facebook.com/tranthaison.duong">Contact</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://news.zing.vn/">News</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://privacy.google.com">Privacy</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Social -->
+                <div class="col-lg-4">
+                    <div class="row">
+                        <div class="social">
+                            <h5>Social Network</h5>
+                            <ul class="list-menu-icon">
+                                <li>
+                                    <a class="icon fa fa-facebook" href="https://www.facebook.com/tranthaison.duong">
+                                        <span class="list-menu-icon-2"> Facebook</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="icon fa fa-instagram" href="https://www.instagram.com/agirlmag/">
+                                        <span class="list-menu-icon-2"> Instagram</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="row footer">
+            <div class="Chu_cuoi col-xs-12 col-md-12 col-sm-12" id="Th_Cuoi_trang" style="font-family: font_legend">
+
+            </div>
+        </div>
+    </div>
+    <!-- footer-->
+
+
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+<script>
+    XL_DU_LIEU.Khoi_dong_Du_lieu((Du_lieu)=>{
+        var Cua_hang = Du_lieu.Thong_tin_Cua_hang;
+        XL_CUA_HANG.Tao_The_hien(Cua_hang,Th_Cua_hang,Th_Cuoi_trang);
+    });
+    Th_Tat_ca.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Xem_Danh_sach.html"
+    }
+
+    Th_Rau_an_la.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Xem_Danh_sach_Rau_an_la.html"
+    }
+
+    Th_Rau_an_than.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Xem_Danh_sach_Rau_an_than.html"
+    }
+    Th_Rau_an_qua.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Xem_Danh_sach_Rau_an_qua.html"
+    }
+    Th_Rau_an_cu.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Xem_Danh_sach_Rau_an_cu.html"
+    }
+    Th_Rau_an_hat.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Xem_Danh_sach_Rau_an_hat.html"
+    }
+    Th_Trai_cay.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Xem_Danh_sach_Trai_cay.html"
+    }
+    Th_Thuc_pham_kho.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Xem_Danh_sach_Thuc_pham_kho.html"
+    }
+    Th_Tim_kiem.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Tim_kiem.html"
+    }
+    Th_Gio_hang.onclick = () => {
+        var len = sessionStorage.length;
+        if (len == 0) {
+            var The_hien = document.createElement("div");
+            Th_modal.appendChild(The_hien);
+            var noi_dung = "";
+            noi_dung += `<div class="modal fade" id="myModal">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                
+                                    <div class="modal-header">
+                                    <h4 class="modal-title">The cart is empty!</h4>
+                                    </div>
+                                    
+                                    <div class="modal-body">
+                                    Please select your product 
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>`
+            The_hien.innerHTML = noi_dung;
+        }
+        else {
+            Khung_Chuc_nang.src = "MH_Xem_Danh_sach_Gio_hang.html"
+            Th_modal.innerHTML = "";
+        }
+    }
+
+    Th_Lien_he.onclick = () => {
+        Khung_Chuc_nang.src = "MH_Xem_Dia_diem_Cua_hang.html"
+    }
+    Th_Login.onclick = () => {
+        window.location.href = "../Giao_dien_Dang_nhap/MH_Dang_nhap.html"
+    }
+
+    Th_Tat_ca.click()
+</script>
+
+</html>
